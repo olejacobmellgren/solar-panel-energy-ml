@@ -21,7 +21,9 @@ def get_year_val(time):
     return math.sin(time/8760.25)
 ```
 
-## Snow: `snow_depth`, `snow_drift`, `snow_melt_10min` and `snow_water`
+*Might also be interesting to look at the linear component if time due to environmental changes. Maybe as an opposite exponential function where the later changes becomes less and less relevant?*
+
+## Snow: `snow_density`, `snow_depth`, `snow_drift`, `snow_melt_10min` and `snow_water`
 
 These attributes are interesting when there is snow, however when there is no snow, the rate at which it melts does not matter in terms of solar production (since ther is no snow). 
 
@@ -30,3 +32,11 @@ Thus a state where `snow_melt_10min` = `0` can be very bad when there is snow, a
 > Thoughts: 
 > - Maybe a stacking of models where one tries to figure out the relevance of this column? 
 > - Maybe possible to ignore these values if `snow_depth` = `0`
+
+## Boolean values: 
+- `is_day` -> 0/1
+- `is_in_shadow` -> 0/1
+
+## Other int values:
+- `dew_or_rime` -> (dew=1, rime=-1, neither=0)
+- `elevation` -> The elevation of the solar_panel above ground. 
