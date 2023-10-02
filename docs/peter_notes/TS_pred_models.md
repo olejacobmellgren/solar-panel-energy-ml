@@ -3,6 +3,15 @@
 *author: Peter Lawrence*
 *date: 2.10.2023*
 
+>**CONTENT**: 
+>
+>- [ARIMA](#arima-autoregressive-integrated-moving-average)
+>- [Prophet](#prophet-by-facebook)
+>- [Tensorflow](#tensorflow-by-google)
+>- [Ensemble models](#ensemble-models)
+>- [Anomaly Detection](#anomaly-detection)
+
+
 ## ARIMA (AutoRegressive Integrated Moving Average)
 
 This is an algorithem that is based on ARMA. The difference is that this model can be used on data that is non-stationary. 
