@@ -97,6 +97,9 @@ There are mainly three ways of aggregating the prediciton from multiple entities
 - **Averaging:** Typically used for regression problems where we average predictions. 
 - **Weighted average:** Weitghts to the results from the different algorithms. Weights can be calculated based on all predictions from all models if we can find combinations in the dataset. Typically found in feature engineering and observations in the dataset. 
 
+### Resources: 
+- [From Builtin](https://builtin.com/machine-learning/ensemble-model)
+
 ## Anomaly detection
 
 Probably not that relevant for our project
