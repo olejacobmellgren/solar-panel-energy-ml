@@ -34,12 +34,13 @@ Thus a state where `snow_melt_10min` = `0` can be very bad when there is snow, a
 > - Maybe possible to ignore these values if `snow_depth` = `0`
 
 ## Boolean values: 
-- `is_day` -> 0/1
-- `is_in_shadow` -> 0/1
+- `is_day:idx` -> 0/1
+- `is_in_shadow:idx` -> 0/1
 
 ## Other int values:
 - `dew_or_rime` -> (dew=1, rime=-1, neither=0)
 - `elevation` -> The elevation of the solar_panel above ground. 
+- `precip_type_5min:idx` -> precipitation type during the previous time period (5min)
 
 
 ## Contains NaN: `ceiling_height`, `cloud_base`
