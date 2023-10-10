@@ -53,7 +53,7 @@ def get_training_data(location: str or list = None, merge: bool = True) -> List[
 
     NOTE: If merge = False the list returned is [x_train_observed_A, x_train_estimated_A,...]
     """
-    # dealing with current working directory for relative paths
+    ### dealing with current working directory for relative paths ###
     cwd_old = os.getcwd()
     file_loc = os.path.abspath(__file__)
     cwd_new = os.path.dirname(file_loc)
@@ -84,8 +84,9 @@ def get_training_data(location: str or list = None, merge: bool = True) -> List[
             except Exception as e:
                 print(f'\nProbaly no matching location for passed strings:{location}')
                 raise Exception(e)
-    # returning working directory
+    
     os.chdir(cwd_old)
+    ### returning working directory ###
     return [x_train_list, y_target_list]
 
 if __name__ == '__main__':
