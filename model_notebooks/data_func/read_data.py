@@ -14,7 +14,7 @@ C = folder + 'C/'
 
 XTRO = 'X_train_observed.parquet'
 XTRE = 'X_train_estimated.parquet'
-XTEE = 'X_test_estimatied.parquet'
+XTEE = 'X_test_estimated.parquet'
 Y = 'train_targets.parquet'
 
 relative_filepaths = {"A": A, "B": B, "C": C}
@@ -88,6 +88,51 @@ def get_training_data(location: str or list = None, merge: bool = True) -> List[
     os.chdir(cwd_old)
     ### returning working directory ###
     return [x_train_list, y_target_list]
+
+def get_test_data(location: str or list = None) -> List[pd.DataFrame]:
+    """
+    Returns list with x_test data for given location(s) in a list
+
+    OR if none given, returns all locations x_testper location 
+    
+    **in order A, B, C <----------NB!** or order given. 
+
+    RETURNS: List[x_test: pd.DataFrame]
+    """
+    ### dealing with current working directory for relative paths ###
+    cwd_old = os.getcwd()
+    file_loc = os.path.abspath(__file__)
+    cwd_new = os.path.dirname(file_loc)
+    os.chdir(cwd_new)
+    
+    x_list = []
+    
+    if location == None: 
+        for i in relative_filepaths:
+            path = relative_filepaths[i]
+            x_list.append(get_df_from_parquet(path+XTEE))
+    
+    elif type(location) == str:
+        try:
+            path = relative_filepaths[location] 
+            x_list.append(get_df_from_parquet(path+XTEE))
+        except Exception as e:
+            print(f'\nProbaly no matching location for passed string: {location}')
+            raise Exception(e)
+        
+    
+    elif type(location) == list:
+        for loc in location: 
+            try: 
+                path = relative_filepaths[loc]
+                x_list.append(get_df_from_parquet(path+XTEE))
+            except Exception as e:
+                print(f'\nProbaly no matching location for passed strings:{location}')
+                raise Exception(e)
+    
+    os.chdir(cwd_old)
+    ### returning working directory ###
+    return x_list
 
 if __name__ == '__main__':
     result = get_training_data()
