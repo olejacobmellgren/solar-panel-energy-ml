@@ -40,3 +40,12 @@ Thus a state where `snow_melt_10min` = `0` can be very bad when there is snow, a
 ## Other int values:
 - `dew_or_rime` -> (dew=1, rime=-1, neither=0)
 - `elevation` -> The elevation of the solar_panel above ground. 
+
+
+## Contains NaN: `ceiling_height`, `cloud_base`
+
+- Use models that can handle NaN values
+- remove rows of data
+- put "fake" data in said rows
+    - predict what the rows should cont
+    - do a linear insertion from last not NaN value to first non NaN value
