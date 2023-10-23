@@ -15,6 +15,11 @@ agg_types = ['count',
              'std',
              'var']
 
+def stocastic_median(x_list):
+    s = np.median(x_list)
+    return int(s)
+
+
 def gen_agg(df: pd.DataFrame, agg_type, batch_size: int = 4) -> pd.DataFrame:
     """
     Pass dataframe WITH date_forecast value and choose aggregation type by passing string to 'agg_type'
@@ -47,5 +52,5 @@ if __name__ == '__main__':
     print(f'median aggregation \n{dfa}')
     dfa = agg_test(df, 'sum')
     print(f'sum aggregation \n{dfa}')
-    dfa = agg_test(df, np.mean)
+    dfa = agg_test(df, stocastic_median)
     print(f'mode aggregation \n{dfa}')
