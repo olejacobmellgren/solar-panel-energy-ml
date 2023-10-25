@@ -10,7 +10,7 @@ def date_forecast_columns(df: pd.DataFrame):
   df['day'] = date_forecast.dt.day
   df['hours'] = date_forecast.dt.hour
 
-  df.drop(columns=['date_forecast'], inplace=True)
+  #df.drop(columns=['date_forecast'], inplace=True)
   return df
 
 

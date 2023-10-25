@@ -1,6 +1,7 @@
 import pandas as pd
 
 def combine_all_frames(frames: [pd.DataFrame]):
+    
     for i, frame in enumerate(frames):
         if i == 0:
             frame['location'] = '0'
@@ -9,7 +10,7 @@ def combine_all_frames(frames: [pd.DataFrame]):
         elif i == 2:
             frame['location'] = '2'
     combined = pd.concat(frames)
-    combined['location'] = combined['location'].astype('int64')
+    combined['location'] = combined['location'].astype('float64')
 
     return combined
 
