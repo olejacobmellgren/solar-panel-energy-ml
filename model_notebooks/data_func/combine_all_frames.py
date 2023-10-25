@@ -10,6 +10,7 @@ def combine_all_frames(frames: [pd.DataFrame]):
         elif i == 2:
             frame['location'] = '2'
     combined = pd.concat(frames)
+    combined = combined.reset_index(drop=True)
     combined['location'] = combined['location'].astype('float64')
 
     return combined
