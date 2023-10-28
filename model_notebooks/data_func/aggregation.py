@@ -36,7 +36,7 @@ def gen_agg(df: pd.DataFrame, agg_type, batch_size: int = 4) -> pd.DataFrame:
         Also possible to pass aggregation function directly f.eks. np.mean
     """
     agg_func = {col: agg_type for col in df.columns[1:]} # [1:] assumes 'date_forecast' is first
-    return df.groupby(df.index // batch_size).agg({**{'date_forecast': 'first'}, **agg_func})
+    return df.groupby(df.index // batch_size).agg({**{'date_forecast': 'last'}, **agg_func})
 
 
 def agg_test(df: pd.DataFrame, agg_type, batch_size: int = 4) -> pd.DataFrame:
