@@ -29,7 +29,7 @@ def merge_x(xo_path, xe_path):
     xo = get_df_from_parquet(xo_path)
     xe = get_df_from_parquet(xe_path)
     if 'date_calc' in xe.columns:
-        xe.drop(columns=['date_calc'], inplace=True)
+         xe.drop(columns=['date_calc'], inplace=True)
     x_train = pd.concat([xo, xe])
     return x_train
 
