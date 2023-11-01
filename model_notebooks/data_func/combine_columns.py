@@ -2,19 +2,23 @@ import pandas as pd
 
 def combine_columns_sum(df: pd.DataFrame, new_column_name: str, columns_list: [str]):
   df[new_column_name] = df[columns_list].sum(axis=1)
+  return df
 
 def combine_columns_sub(df: pd.DataFrame, new_column_name: str, columns_list: [str]):
   df[new_column_name] = df[columns_list[0]]
   for column in columns_list[1:]:
     df[new_column_name] = df[new_column_name] - df[column]
+  return df
 
 def combine_columns_multiplication(df: pd.DataFrame, new_column_name: str, columns_list: [str]):
   df[new_column_name] = df[columns_list].product(axis=1)
+  return df
 
 def combine_columns_division(df: pd.DataFrame, new_column_name: str, columns_list: [str]):
   df[new_column_name] = df[columns_list[0]]
   for column in columns_list[1:]:
     df[new_column_name] = df[new_column_name] / df[column]
+  return df
 
 
 
