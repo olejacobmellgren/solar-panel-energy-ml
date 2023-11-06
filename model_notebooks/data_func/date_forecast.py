@@ -9,6 +9,9 @@ def date_forecast_columns(df: pd.DataFrame):
   df['month'] = date_forecast.dt.month
   df['day'] = date_forecast.dt.day
   df['hours'] = date_forecast.dt.hour
+  df['day_of_week'] = date_forecast.dt.dayofweek
+  df['day_of_year'] = date_forecast.dt.dayofyear
+  df['week_of_year'] = date_forecast.dt.isocalendar().week
 
   # df.drop(columns=['date_forecast'], inplace=True)
   return df
