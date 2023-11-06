@@ -28,6 +28,14 @@ def get_df_from_parquet(filepath: str) -> pd.DataFrame:
 def merge_x(xo_path, xe_path):
     xo = get_df_from_parquet(xo_path)
     xe = get_df_from_parquet(xe_path)
+    xo['estimated'] = 0
+    xe['estimated'] = 1
+    xo['estimation_calc_forecast_difference'] = 0
+    time_diff = []
+    for i in range(len(xe)):
+        time_diff.append(abs((xe['date_forecast'].iloc[i] - xe['date_calc'].iloc[i]).seconds))
+    xe['estimation_calc_forecast_difference'] = time_diff
+
     if 'date_calc' in xe.columns:
          xe.drop(columns=['date_calc'], inplace=True)
     x_train = pd.concat([xo, xe])
@@ -110,7 +118,13 @@ def get_test_data(location: str or list = None) -> List[pd.DataFrame]:
     if location == None: 
         for i in relative_filepaths:
             path = relative_filepaths[i]
-            x_list.append(get_df_from_parquet(path+XTEE))
+            xt = get_df_from_parquet(path+XTEE)
+            xt['estimated'] = 1
+            time_diff = []
+            for i in range(len(xt)):
+                time_diff.append(abs((xt['date_forecast'].iloc[i] - xt['date_calc'].iloc[i]).seconds))
+            xt['estimation_calc_forecast_difference'] = time_diff
+            x_list.append(xt)
     
     elif type(location) == str:
         try:
