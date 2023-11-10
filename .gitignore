@@ -2,3 +2,4 @@ venv*
 .pyc
 __pycache__
 AutogluonModels
+AK_Loc*
